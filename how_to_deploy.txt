@@ -1,1 +1,3 @@
-lambda_tweet.py を tweetQuotes の lambda_function.py に、lambda_reply.py を replyQuotes の lambda_function.py にそれぞれコピペすること。
+lambda_tweet.py を tweetQuotes の lambda_function.py に
+lambda_reply.py を replyQuotes の lambda_function.py に
+それぞれコピペすること。

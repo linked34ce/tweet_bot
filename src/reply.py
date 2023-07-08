@@ -18,14 +18,15 @@ conn = sqlite3.connect(dbname)
 cur = conn.cursor()
 
 words = {
-    "高咲": 1, "たかさき": 1, "タカサキ": 1, "takasaki": 1, 
+    "高咲": 1, "たかさき": 1, "タカサキ": 1, "takasaki": 1,
     "侑": 1, "ゆう": 1, "yu": 1, "ユウ": 1,
     
-    "上原": 2, "うえはら": 2, "ウエハラ": 2, "uehara": 2, 
+    "上原": 2, "うえはら": 2, "ウエハラ": 2, "uehara": 2,
     "歩夢": 2, "あゆ": 2, "アユ": 2, "ayu": 2,  
     "ぽむ": 2, "ポム": 2, "pomu": 2,
     
-    "中須": 3, "かす": 3, "カス": 3, "kasu": 3,
+    "中須": 3, "なかす": 3, "ナカス": 3, "nakasu": 3,
+    "かす": 3, "カス": 3, "kasu": 3,
     
     "桜坂": 4, "おうさか": 4, "オウサカ": 4, "osaka": 4,
     "しず": 4, "シズ": 4, "shizu": 4,
@@ -36,7 +37,7 @@ words = {
     "宮下": 6, "みやした": 6, "ミヤシタ": 6, "miyashita": 6,
     "愛": 6, "あい": 6, "アイ": 6, "ai": 6,
     
-    "近江": 7,  "このえ": 7, "コノエ": 8, "konoe": 8,
+    "近江": 7,  "このえ": 7, "コノエ": 7, "konoe": 7,
     "彼方": 7, "かな": 7, "カナ": 7, "kana": 7,
     
     "優木": 8, "ゆうき": 8, "ユウキ": 8, "yuki": 8,
@@ -48,13 +49,13 @@ words = {
     "天王寺": 10, "てんのうじ": 10, "テンノウジ": 10, "tennoji": 10,
     "璃奈": 10, "りな": 10, "リナ": 10, "rina": 10,
     
-    "三船": 11, "みふね": 11, "ミフネ": 11, "mihune": 11, 
+    "三船": 11, "みふね": 11, "ミフネ": 11, "mifune": 11,
     "栞子": 11, "しお": 11, "シオ": 11, "shio": 11,
     
     "みあ": 12, "ミア": 12, "mia": 12,
     "ていらー": 12, "テイラー": 12, "taylor": 12,
     
-    "鐘": 13, "しょう": 13, "ショウ": 13, "zhong": 13, 
+    "鐘": 13, "しょう": 13, "ショウ": 13, "zhong": 13,
     "嵐珠": 13, "らん": 13, "ラン": 13, "lanzhu": 13,
     
     "中川": 14, "なかがわ": 14, "ナカガワ": 14, "nakagawa": 14,
@@ -66,15 +67,15 @@ words = {
     
     "はんぺん": 17, "hanpen": 17,
     
-    "色葉": 18, "いろは": 18, "イロハ": 18, "iroha": 18, 
+    "色葉": 18, "いろは": 18, "イロハ": 18, "iroha": 18,
     
     "今日子": 19, "きょうこ": 19, "キョウコ": 19, "kyoko": 19,
     
-    "浅希": 20, "あさぎ": 20, "アサギ": 20, "asagi": 20, 
+    "浅希": 20, "あさぎ": 20, "アサギ": 20, "asagi": 20,
     
     "遥": 21, "はるか": 21, "ハルカ": 21, "haruka": 21,
     
-    "くりすてぃーな": 22, "クリスティーナ": 22, "christina": 22, 
+    "くりすてぃーな": 22, "クリスティーナ": 22, "christina": 22,
     
     "支倉": 23, "はせくら": 23, "ハセクラ": 23, "hasekura": 23,
     "かさね": 23, "カサネ": 23, "kasane": 23,
@@ -82,12 +83,12 @@ words = {
     "綾小路": 24, "あやのこうじ": 24, "アヤノコウジ": 24, "ayanokoji": 24,
     "姫乃": 24, "ひめの": 24, "ヒメノ": 24, "himeno": 24,
     
-    "紫藤": 25, "しどう": 25, "シドウ": 25, "shido": 25, 
+    "紫藤": 25, "しどう": 25, "シドウ": 25, "shido": 25,
     "美咲": 25, "みさき": 25, "ミサキ": 25, "misaki": 25,
     
     "副会長": 26, "vice president": 26,
     
-    "書記": 27, "secretary": 27, 
+    "書記": 27, "secretary": 27,
     
     "女子高生": 28, "high school girl": 28,
     
@@ -96,7 +97,7 @@ words = {
 
 word_dupulicates = [
     ("ayumu", "yu"), ("黒しずく", "しず"), ("dark shizuku", "shizuku"),
-    ("遥", "近江"), ("はるか", "このえ"), ("ハルカ", "コノエ"), 
+    ("遥", "近江"), ("はるか", "このえ"), ("ハルカ", "コノエ"),
     ("haruka", "konoe"),
 ]
 
@@ -115,7 +116,7 @@ numbers = {
     "12": 12, "１２": 12, "十二": 12,
     "13": 13, "１３": 13, "十三": 13,
 }
- 
+
 number_dupulicates = [
     ("10", "1"), ("１０", "１"), ("11", "1"), ("１１", "１"), 
     ("十一", "十"), ("十一", "一"), ("12", "1"), ("12", "2"), 
@@ -130,13 +131,14 @@ def reply():
     for status in timeline:
         mention_time = status.created_at.timestamp()
         
-        if time.time() - mention_time < 60:
+        # 本番用は 60
+        if time.time() - mention_time < 10000000:
             status_id = status.id
             screen_name = status.author.screen_name
         else:
             continue
         
-        character_id = 0
+        character_ids = []
         episode_id = 0
         
         for word in words:
@@ -148,9 +150,10 @@ def reply():
                         isDuplicate = True
                 if isDuplicate:
                     continue
-                
-                character_id = words[word]
-                break
+
+                print("test")
+            
+                character_ids.append(words[word])
         
         for number in numbers:
             isDuplicate = False
@@ -164,6 +167,9 @@ def reply():
                 
                 episode_id = numbers[number]
                 break
+
+        print(character_ids)
+        character_id = character_ids[randint(0, len(character_ids) - 1)]
             
         if character_id > 0 and episode_id > 0:
             count_sql = "select count(*) from Quotes where character = "
@@ -209,7 +215,7 @@ def reply():
         status = "@{} {}\n───────────────\n{}\n第{}話「{}」".format(
             screen_name, quote, character, episode, title
         )
-                
+
         api.update_status(status, in_reply_to_status_id=status_id)
         print(status)
         

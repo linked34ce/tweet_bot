@@ -3,13 +3,15 @@ from sqlite3 import Connection
 
 class ConnectionManager:
 
+    DB_NAME = "./tweet_bot.db"
+
     @staticmethod
     def getConnection() -> Connection:
 
-        dbname = "./tweet_bot.db"
+        conn: Connection = None
 
         try:
-            conn = sqlite3.connect(dbname)     
+            conn = sqlite3.connect(ConnectionManager.DB_NAME)     
 
         except sqlite3.Error:
             print("database error occurred")

@@ -2,6 +2,7 @@ from random import randint
 import os
 import sqlite3
 import tweepy
+from connection_manager import ConnectionManager
 
 CONSUMER_KEY = os.environ["CONSUMER_KEY"]
 CONSUMER_SECRET = os.environ["CONSUMER_SECRET"]
@@ -12,10 +13,8 @@ auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 api = tweepy.API(auth)
 
-dbname = "./tweet_bot.db"
-
 try:
-    conn = sqlite3.connect(dbname)
+    conn = ConnectionManager.getConnection()
     cur = conn.cursor()
 
     cur.execute("select count(*) from Quotes;")

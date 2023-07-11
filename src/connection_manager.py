@@ -1,5 +1,5 @@
 import sqlite3
-from sqlite3 import Connection
+from sqlite3 import Connection, Row, Error
 
 class ConnectionManager:
 
@@ -11,9 +11,10 @@ class ConnectionManager:
         conn: Connection = None
 
         try:
-            conn = sqlite3.connect(ConnectionManager.DB_NAME)     
+            conn = sqlite3.connect(ConnectionManager.DB_NAME)
+            conn.row_factory = Row   
 
-        except sqlite3.Error:
+        except Error:
             print("database error occurred")
 
         return conn

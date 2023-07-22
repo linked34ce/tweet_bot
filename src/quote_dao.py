@@ -1,6 +1,6 @@
 from sqlite3 import Connection, Cursor, Error
-import sqlite3
 from connection_manager import ConnectionManager
+from quote import Quote
 
 
 class QuoteDAO:
@@ -8,8 +8,29 @@ class QuoteDAO:
     def __init__(self, conn: Connection) -> None:
         self.conn = conn
 
-    def findQuoteById(self, id: int):
-        pass
+    def findQuoteById(self, id: int) -> Quote:
+        sql: str = "select * from (Quotes inner join Episodes on Quotes.episode = Episodes.id) " \
+                   "inner join Characters on Quotes.character = Characters.id where Quotes.id = ?;"
+        cur: Cursor = None
+        params: tuple = (id, )
+        res: tuple = ()
+        quote: Quote = None
+
+        try:
+            self.conn = ConnectionManager.getConnection()
+            cur = self.conn.cursor()
+            cur.execute(sql, params)
+            res = cur.fetchone()
+            quote = Quote(res["episode"], res["title"], res["character"], res["quote"])
+
+        except Error:
+            print("database error occurred")
+
+        finally:
+            if cur != None:
+                cur.close()
+
+        return quote
 
     def findQuoteByCharacter(character: str):
         pass
@@ -20,17 +41,18 @@ class QuoteDAO:
     def findQuoteByCharacterAndEpisode(episode: int):
         pass
 
-    def getSumOfQuotes(self):
+    def getSumOfQuotes(self) -> int:
         sql: str = "SELECT COUNT(*) AS count FROM Quotes;"
         cur: Cursor = None
-        result: tuple = ()
+        res: tuple = ()
+        sum_of_quotes: int = 0
 
         try:
             self.conn = ConnectionManager.getConnection()
             cur = self.conn.cursor()
             cur.execute(sql)
-            result = cur.fetchone()
-            sum_of_quotes = result["count"]
+            res = cur.fetchone()
+            sum_of_quotes = res["count"]
 
         except Error:
             print("database error occurred")
